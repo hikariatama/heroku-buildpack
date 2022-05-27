@@ -10,6 +10,12 @@ else
   echo "-----> Missing authorization_strings"
   exit 0
 fi
+if [ -f $ENV_DIR/postgre_uri ]; then
+  export postgre_uri="$(cat $ENV_DIR/postgre_uri)"
+else
+  echo "-----> Missing postgre_uri"
+  exit 0
+fi
 if [ -f $ENV_DIR/api_hash ]; then
   export api_hash="$(cat $ENV_DIR/api_hash)"
 else
@@ -33,5 +39,5 @@ export PIP_TARGET="$(echo $1/.heroku/python/lib/python*.*/site-packages)"
 
 echo "-----> Installing Telegram-stored dependencies"
 cd $1
-python3 -m friendly-telegram --heroku-deps-internal
+python3 -m hikka
 exit $?

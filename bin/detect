@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ -d $1/friendly-telegram ]; then
+if [ -d $1/hikka ]; then
   exit 0
 else
   exit 1
